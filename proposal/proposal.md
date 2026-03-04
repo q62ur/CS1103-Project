@@ -1,3 +1,7 @@
+Student: Chanchalpreet Kaur
+Course: CS1103
+Instructor: Jong-Kyou Kim
+
 # Pet Adoption Management System
 
 ## Project Description
