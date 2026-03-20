@@ -91,3 +91,25 @@ CREATE TABLE AdoptionApplication
     --link to pet
     FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)
 );
+
+--Table for completed pet adoptions
+CREATE TABLE AdoptionRecord
+(
+    --unique ID for each adoption record
+    record_id INT PRIMARY KEY,
+
+    --adopter who adopted the pet
+    adopter_id INT,
+
+    --pet that got adopted
+    pet_id INT,
+
+    --date of adoption
+    adoption_date DATE,
+
+    --link to adopter
+    FOREIGN KEY (adopter_id) REFERENCES Adopter(adopter_id),
+
+    --link to pet
+    FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)
+);
