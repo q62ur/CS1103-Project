@@ -28,7 +28,8 @@ public class PetAdoptionApp
             System.out.println("1. View available pets");
             System.out.println("2. Submit adoption application");
             System.out.println("3. View all adoption applications");
-            System.out.println("4. Exit");
+            System.out.println("4. View adopted pets");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             //read user choice
@@ -158,6 +159,36 @@ public class PetAdoptionApp
                     break;
 
                 case 4:
+                    //show adopted pets
+                    try
+                    {
+                        Connection conn = DriverManager.getConnection(url);
+                        Statement stmt = conn.createStatement();
+                
+                        String sql = "SELECT * FROM Pet WHERE adoption_status = 'Adopted'";
+                        ResultSet rs = stmt.executeQuery(sql);
+                
+                        System.out.println("\nAdopted pets:");
+                        while (rs.next())
+                        {
+                            System.out.println(
+                                rs.getInt("pet_id") + " | "
+                                + rs.getString("name") + " | "
+                                + rs.getString("species")
+                            );
+                        }
+
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Error fetching adopted pets.");
+                    }
+                    break;
+
+                case 5:
                     System.out.println("Exiting program...");
                     break;
 
@@ -165,7 +196,7 @@ public class PetAdoptionApp
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        }while(choice != 4);
+        }while(choice != 5);
 
         //close scanner
         input.close();
