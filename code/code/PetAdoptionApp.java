@@ -84,9 +84,21 @@ public class PetAdoptionApp
                         System.out.print("Enter pet ID: ");
                         int petId = input.nextInt();
 
+                        //get next available application ID
+                        String idQuery = "SELECT MAX(application_id) AS max_id FROM AdoptionApplication";
+                        ResultSet rs = stmt.executeQuery(idQuery);
+                        
+                        int newId = 1;
+                        if (rs.next())
+                        {
+                            newId = rs.getInt("max_id") + 1;
+                        }
+                        
+                        rs.close();
+
                         //SQL to insert a new adoption application
                         String sql = "INSERT INTO AdoptionApplication "
-                                + "VALUES (3, " + adopterId + ", " + petId
+                                + "VALUES (" + newId + ", " + adopterId + ", " + petId
                                 + ", '2026-03-19', 'Pending')";
 
                         //run insert query
