@@ -71,7 +71,37 @@ public class PetAdoptionApp
                     break;
 
                 case 2:
-                    System.out.println("Submitting adoption application...");
+                    //submit adoption application into database
+                    try
+                    {
+                        Connection conn = DriverManager.getConnection(url);
+                        Statement stmt = conn.createStatement();
+
+                        //read adopter and pet IDs from user
+                        System.out.print("Enter adopter ID: ");
+                        int adopterId = input.nextInt();
+                
+                        System.out.print("Enter pet ID: ");
+                        int petId = input.nextInt();
+
+                        //SQL to insert a new adoption application
+                        String sql = "INSERT INTO AdoptionApplication "
+                                + "VALUES (3, " + adopterId + ", " + petId
+                                + ", '2026-03-19', 'Pending')";
+
+                        //run insert query
+                        stmt.execute(sql);
+                
+                        System.out.println("Adoption application submitted successfully.");
+                
+                        stmt.close();
+                        conn.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Could not submit adoption application.");
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 3:
