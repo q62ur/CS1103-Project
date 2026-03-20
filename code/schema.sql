@@ -113,3 +113,9 @@ CREATE TABLE AdoptionRecord
     --link to pet
     FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)
 );
+
+--------------------------------------------------------------
+--Sample shelter records
+INSERT INTO Shelter VALUES
+(1, 'Happy Tails Shelter', 'Saint John'),
+(2, 'Safe Paws Shelter', 'Fredericton');
