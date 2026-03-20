@@ -27,5 +27,8 @@ The database will allow users to:
 ## Technologies Used
 - Java
 - JDBC
+
+## ER Diagram
+See report/er_diagram.png
 - SQLite
 - SQL
