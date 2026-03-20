@@ -66,3 +66,28 @@ CREATE TABLE Staff
     --link staff to shelter
     FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)
 );
+
+--Table for adoption applications submitted by adopters
+CREATE TABLE AdoptionApplication
+(
+    --unique ID for each application
+    application_id INT PRIMARY KEY,
+
+    --which adopter submitted the application
+    adopter_id INT,
+
+    --which pet is being applied for
+    pet_id INT,
+
+    --date of application
+    application_date DATE,
+
+    --status of application (Pending, Approved, Rejected)
+    status VARCHAR(20),
+
+    --link to adopter
+    FOREIGN KEY (adopter_id) REFERENCES Adopter(adopter_id),
+
+    --link to pet
+    FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)
+);
