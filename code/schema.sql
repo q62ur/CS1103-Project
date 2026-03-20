@@ -125,3 +125,8 @@ INSERT INTO Pet VALUES
 (1, 'Max', 'Dog', 'Labrador', 3, 'Available', 1),
 (2, 'Bella', 'Cat', 'Siamese', 2, 'Available', 1),
 (3, 'Charlie', 'Dog', 'Beagle', 4, 'Adopted', 2);
+
+--Sample adopter records
+INSERT INTO Adopter VALUES
+(1, 'John Smith', '1234567890', 'john@example.com', 'Saint John'),
+(2, 'Emma Brown', '9876543210', 'emma@example.com', 'Fredericton');
