@@ -77,6 +77,36 @@ public class DatabaseSetup
                     + "FOREIGN KEY (adopter_id) REFERENCES Adopter(adopter_id), "
                     + "FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)"
                     + ");";
+
+            //sample data for Shelter table
+            String insertShelter = "INSERT INTO Shelter VALUES "
+                    + "(1, 'Happy Tails Shelter', 'Saint John'), "
+                    + "(2, 'Safe Paws Shelter', 'Fredericton');";
+
+            //sample data for Pet table
+            String insertPet = "INSERT INTO Pet VALUES "
+                    + "(1, 'Max', 'Dog', 'Labrador', 3, 'Available', 1), "
+                    + "(2, 'Bella', 'Cat', 'Siamese', 2, 'Available', 1), "
+                    + "(3, 'Charlie', 'Dog', 'Beagle', 4, 'Adopted', 2);";
+
+            //sample data for Adopter table
+            String insertAdopter = "INSERT INTO Adopter VALUES "
+                    + "(1, 'John Smith', '1234567890', 'john@example.com', 'Saint John'), "
+                    + "(2, 'Emma Brown', '9876543210', 'emma@example.com', 'Fredericton');";
+
+            //sample data for Staff table
+            String insertStaff = "INSERT INTO Staff VALUES "
+                    + "(1, 'Alice Green', 'Manager', 1), "
+                    + "(2, 'Bob White', 'Volunteer', 2);";
+
+            //sample data for AdoptionApplication table
+            String insertApplication = "INSERT INTO AdoptionApplication VALUES "
+                    + "(1, 1, 1, '2026-03-15', 'Pending'), "
+                    + "(2, 2, 3, '2026-03-16', 'Approved');";
+
+            //sample data for AdoptionRecord table
+            String insertRecord = "INSERT INTO AdoptionRecord VALUES "
+                    + "(1, 2, 3, '2026-03-18');";
             
             //execute table creation
             stmt.execute(shelterTable);
@@ -86,9 +116,16 @@ public class DatabaseSetup
             stmt.execute(staffTable);
             stmt.execute(applicationTable);
             stmt.execute(recordTable);
+
+            stmt.execute(insertShelter);
+            stmt.execute(insertPet);
+            stmt.execute(insertAdopter);
+            stmt.execute(insertStaff);
+            stmt.execute(insertApplication);
+            stmt.execute(insertRecord);
             
             //success message
-            System.out.println("All tables created successfully.");
+            System.out.println("All tables and sample data created successfully.");
 
             //close statement and connection
             stmt.close();
