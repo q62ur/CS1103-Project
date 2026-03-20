@@ -24,11 +24,11 @@ public class PetAdoptionApp
 
         do
         {
-            //display menu options
             System.out.println("\nPet Adoption Management System");
             System.out.println("1. View available pets");
             System.out.println("2. Submit adoption application");
-            System.out.println("3. Exit");
+            System.out.println("3. View all adoption applications");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
 
             //read user choice
@@ -117,6 +117,39 @@ public class PetAdoptionApp
                     break;
 
                 case 3:
+                    //show all adoption applications
+                    try
+                    {
+                        Connection conn = DriverManager.getConnection(url);
+                        Statement stmt = conn.createStatement();
+                
+                        String sql = "SELECT * FROM AdoptionApplication";
+                        ResultSet rs = stmt.executeQuery(sql);
+
+                        System.out.println("\nAdoption applications:");
+                        while (rs.next())
+                        {
+                            System.out.println(
+                                rs.getInt("application_id") + " | "
+                                + rs.getInt("adopter_id") + " | "
+                                + rs.getInt("pet_id") + " | "
+                                + rs.getString("application_date") + " | "
+                                + rs.getString("status")
+                            );
+                        }
+
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Could not fetch adoption applications.");
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case 4:
                     System.out.println("Exiting program...");
                     break;
 
@@ -124,7 +157,7 @@ public class PetAdoptionApp
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        } while(choice != 3);
+        }while(choice != 4);
 
         //close scanner
         input.close();
