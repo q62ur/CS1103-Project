@@ -1,6 +1,12 @@
 //import scanner for user input
 import java.util.Scanner;
 
+//import JDBC classes
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 //main class for pet adoption application
 public class PetAdoptionApp
 {
@@ -12,6 +18,9 @@ public class PetAdoptionApp
 
         //variable to store menu choice
         int choice;
+
+        //database file
+        String url = "jdbc:sqlite:petadoption.db";
 
         do
         {
@@ -29,7 +38,36 @@ public class PetAdoptionApp
             switch(choice)
             {
                 case 1:
-                    System.out.println("Showing available pets...");
+                    //show available pets from database
+                    try
+                    {
+                        Connection conn = DriverManager.getConnection(url);
+                        Statement stmt = conn.createStatement();
+
+                        String sql = "SELECT * FROM Pet WHERE adoption_status = 'Available'";
+                        ResultSet rs = stmt.executeQuery(sql);
+
+                        System.out.println("\nAvailable pets:");
+                        while (rs.next())
+                        {
+                            System.out.println(
+                                rs.getInt("pet_id") + " | "
+                                + rs.getString("name") + " | "
+                                + rs.getString("species") + " | "
+                                + rs.getString("breed") + " | "
+                                + rs.getInt("age")
+                            );
+                        }
+
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Could not fetch available pets.");
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 2:
