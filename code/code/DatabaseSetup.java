@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
 //main class to setup database
 public class DatabaseSetup
@@ -123,6 +124,28 @@ public class DatabaseSetup
             stmt.execute(insertStaff);
             stmt.execute(insertApplication);
             stmt.execute(insertRecord);
+
+            //query to show all available pets
+            String selectPets = "SELECT * FROM Pet WHERE adoption_status = 'Available'";
+
+            //run the select query
+            ResultSet rs = stmt.executeQuery(selectPets);
+
+            //display available pets
+            System.out.println("Available pets:");
+            while (rs.next())
+            {
+                System.out.println(
+                    rs.getInt("pet_id") + " | "
+                    + rs.getString("name") + " | "
+                    + rs.getString("species") + " | "
+                    + rs.getString("breed") + " | "
+                    + rs.getInt("age")
+                );
+            }
+
+            //close result set
+            rs.close();
             
             //success message
             System.out.println("All tables and sample data created successfully.");
