@@ -144,3 +144,21 @@ INSERT INTO AdoptionApplication VALUES
 --Sample adoption records
 INSERT INTO AdoptionRecord VALUES
 (1, 2, 3, '2026-03-18');
+
+--------------------------------------------------
+--Example SELECT query: show all available pets
+SELECT * FROM Pet
+WHERE adoption_status = 'Available';
+
+--Example INSERT query: add a new adopter
+INSERT INTO Adopter VALUES
+(3, 'Sophia Lee', '5551234567', 'sophia@example.com', 'Moncton');
+
+--Example UPDATE query: change application status
+UPDATE AdoptionApplication
+SET status = 'Approved'
+WHERE application_id = 1;
+
+--Example DELETE query: remove an adopter record
+DELETE FROM Adopter
+WHERE adopter_id = 3;
