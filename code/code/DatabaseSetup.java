@@ -20,17 +20,40 @@ public class DatabaseSetup
             //create statement object
             Statement stmt = conn.createStatement();
 
-            //simple message to confirm connection
-            System.out.println("Connected to database successfully.");
+            //SQL to create Shelter table
+            String shelterTable = "CREATE TABLE IF NOT EXISTS Shelter ("
+                    + "shelter_id INT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "location VARCHAR(100) NOT NULL"
+                    + ");";
+
+            //SQL to create Pet table
+            String petTable = "CREATE TABLE IF NOT EXISTS Pet ("
+                    + "pet_id INT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "species VARCHAR(50) NOT NULL, "
+                    + "breed VARCHAR(50), "
+                    + "age INT, "
+                    + "adoption_status VARCHAR(20) NOT NULL, "
+                    + "shelter_id INT, "
+                    + "FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)"
+                    + ");";
+
+            //execute table creation
+            stmt.execute(shelterTable);
+            stmt.execute(petTable);
+
+            //success message
+            System.out.println("Shelter and Pet tables created successfully.");
 
             //close statement and connection
             stmt.close();
             conn.close();
         }
-        catch (Exception e)
+        catch(Exception e)
         {
-            //print error message if connection fails
-            System.out.println("Database connection failed.");
+            //print error message if something goes wrong
+            System.out.println("Database setup failed.");
             e.printStackTrace();
         }
     }
