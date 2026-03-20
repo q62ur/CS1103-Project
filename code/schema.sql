@@ -28,3 +28,22 @@ CREATE TABLE Pet
     shelter_id INT,
     FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)
 );
+
+--Table for people who want to adopt pets
+CREATE TABLE Adopter
+(
+    --unique ID for each adopter
+    adopter_id INT PRIMARY KEY,
+
+    --adopter name
+    name VARCHAR(100) NOT NULL,
+
+    --contact number
+    phone VARCHAR(20),
+
+    --email address
+    email VARCHAR(100),
+
+    --home address
+    address VARCHAR(200)
+);
