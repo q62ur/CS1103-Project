@@ -146,6 +146,21 @@ public class DatabaseSetup
 
             //close result set
             rs.close();
+
+            //update query to approve an adoption application
+            String updateApplication = "UPDATE AdoptionApplication "
+                    + "SET status = 'Approved' "
+                    + "WHERE application_id = 1;";
+
+            //run the update query
+            stmt.execute(updateApplication);
+
+            //delete query to remove a sample adopter
+            String deleteAdopter = "DELETE FROM Adopter "
+                    + "WHERE adopter_id = 3;";
+
+            //run the delete query
+            stmt.execute(deleteAdopter);
             
             //success message
             System.out.println("All tables and sample data created successfully.");
