@@ -18,3 +18,14 @@ The database will allow users to:
 - `proposal/` → project proposal  
 - `code/` → SQL scripts and Java JDBC code  
 - `report/` → ER diagram and final report
+
+## How to Run
+
+1. Run DatabaseSetup.java to create database
+2. Run PetAdoptionApp.java to use the system
+
+## Technologies Used
+- Java
+- JDBC
+- SQLite
+- SQL
