@@ -119,3 +119,9 @@ CREATE TABLE AdoptionRecord
 INSERT INTO Shelter VALUES
 (1, 'Happy Tails Shelter', 'Saint John'),
 (2, 'Safe Paws Shelter', 'Fredericton');
+
+--Sample pet records
+INSERT INTO Pet VALUES
+(1, 'Max', 'Dog', 'Labrador', 3, 'Available', 1),
+(2, 'Bella', 'Cat', 'Siamese', 2, 'Available', 1),
+(3, 'Charlie', 'Dog', 'Beagle', 4, 'Adopted', 2);
