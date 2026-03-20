@@ -39,12 +39,56 @@ public class DatabaseSetup
                     + "FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)"
                     + ");";
 
+            //SQL to create Adopter table
+            String adopterTable = "CREATE TABLE IF NOT EXISTS Adopter ("
+                    + "adopter_id INT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "phone VARCHAR(20), "
+                    + "email VARCHAR(100), "
+                    + "address VARCHAR(200)"
+                    + ");";
+
+            //SQL to create Staff table
+            String staffTable = "CREATE TABLE IF NOT EXISTS Staff ("
+                    + "staff_id INT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "role VARCHAR(50), "
+                    + "shelter_id INT, "
+                    + "FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)"
+                    + ");";
+
+            //SQL to create AdoptionApplication table
+            String applicationTable = "CREATE TABLE IF NOT EXISTS AdoptionApplication ("
+                    + "application_id INT PRIMARY KEY, "
+                    + "adopter_id INT, "
+                    + "pet_id INT, "
+                    + "application_date DATE, "
+                    + "status VARCHAR(20), "
+                    + "FOREIGN KEY (adopter_id) REFERENCES Adopter(adopter_id), "
+                    + "FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)"
+                    + ");";
+
+            //SQL to create AdoptionRecord table
+            String recordTable = "CREATE TABLE IF NOT EXISTS AdoptionRecord ("
+                    + "record_id INT PRIMARY KEY, "
+                    + "adopter_id INT, "
+                    + "pet_id INT, "
+                    + "adoption_date DATE, "
+                    + "FOREIGN KEY (adopter_id) REFERENCES Adopter(adopter_id), "
+                    + "FOREIGN KEY (pet_id) REFERENCES Pet(pet_id)"
+                    + ");";
+            
             //execute table creation
             stmt.execute(shelterTable);
             stmt.execute(petTable);
 
+            stmt.execute(adopterTable);
+            stmt.execute(staffTable);
+            stmt.execute(applicationTable);
+            stmt.execute(recordTable);
+            
             //success message
-            System.out.println("Shelter and Pet tables created successfully.");
+            System.out.println("All tables created successfully.");
 
             //close statement and connection
             stmt.close();
