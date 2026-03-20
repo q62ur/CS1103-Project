@@ -47,3 +47,22 @@ CREATE TABLE Adopter
     --home address
     address VARCHAR(200)
 );
+
+--Table for staff working at shelters
+CREATE TABLE Staff
+(
+    --unique ID for each staff member
+    staff_id INT PRIMARY KEY,
+
+    --staff name
+    name VARCHAR(100) NOT NULL,
+
+    --job role (manager, volunteer, etc.)
+    role VARCHAR(50),
+
+    --which shelter the staff works at
+    shelter_id INT,
+
+    --link staff to shelter
+    FOREIGN KEY (shelter_id) REFERENCES Shelter(shelter_id)
+);
