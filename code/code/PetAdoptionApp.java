@@ -63,7 +63,7 @@ public class PetAdoptionApp
                         stmt.close();
                         conn.close();
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         System.out.println("Could not fetch available pets.");
                         e.printStackTrace();
@@ -113,7 +113,7 @@ public class PetAdoptionApp
                         stmt.close();
                         conn.close();
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         System.out.println("Could not submit adoption application.");
                         e.printStackTrace();
@@ -127,16 +127,20 @@ public class PetAdoptionApp
                         Connection conn = DriverManager.getConnection(url);
                         Statement stmt = conn.createStatement();
                 
-                        String sql = "SELECT * FROM AdoptionApplication";
+                        String sql = "SELECT a.application_id, d.name AS adopter_name, p.name AS pet_name, "
+                                + "a.application_date, a.status "
+                                + "FROM AdoptionApplication a "
+                                + "JOIN Adopter d ON a.adopter_id = d.adopter_id "
+                                + "JOIN Pet p ON a.pet_id = p.pet_id";
                         ResultSet rs = stmt.executeQuery(sql);
 
                         System.out.println("\nAdoption applications:");
-                        while (rs.next())
+                        while(rs.next())
                         {
                             System.out.println(
                                 rs.getInt("application_id") + " | "
-                                + rs.getInt("adopter_id") + " | "
-                                + rs.getInt("pet_id") + " | "
+                                + rs.getString("adopter_name") + " | "
+                                + rs.getString("pet_name") + " | "
                                 + rs.getString("application_date") + " | "
                                 + rs.getString("status")
                             );
@@ -146,7 +150,7 @@ public class PetAdoptionApp
                         stmt.close();
                         conn.close();
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         System.out.println("Could not fetch adoption applications.");
                         e.printStackTrace();
