@@ -103,7 +103,11 @@ public class PetAdoptionApp
 
                         //run insert query
                         stmt.execute(sql);
-                
+
+                        //update pet status to Pending
+                        String updateSql = "UPDATE Pet SET adoption_status = 'Pending' WHERE pet_id = " + petId;
+                        stmt.execute(updateSql);
+                        
                         System.out.println("Adoption application submitted successfully.");
                 
                         stmt.close();
