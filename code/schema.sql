@@ -130,3 +130,8 @@ INSERT INTO Pet VALUES
 INSERT INTO Adopter VALUES
 (1, 'John Smith', '1234567890', 'john@example.com', 'Saint John'),
 (2, 'Emma Brown', '9876543210', 'emma@example.com', 'Fredericton');
+
+--Sample staff records
+INSERT INTO Staff VALUES
+(1, 'Alice Green', 'Manager', 1),
+(2, 'Bob White', 'Volunteer', 2);
