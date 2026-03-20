@@ -135,3 +135,8 @@ INSERT INTO Adopter VALUES
 INSERT INTO Staff VALUES
 (1, 'Alice Green', 'Manager', 1),
 (2, 'Bob White', 'Volunteer', 2);
+
+--Sample adoption application records
+INSERT INTO AdoptionApplication VALUES
+(1, 1, 1, '2026-03-15', 'Pending'),
+(2, 2, 3, '2026-03-16', 'Approved');
