@@ -19,6 +19,13 @@ The database will allow users to:
 - `code/` → SQL scripts and Java JDBC code  
 - `report/` → ER diagram,presentation; and final report and final presentation
 
+## Setup Instructions
+
+Download SQLite JDBC driver from:
+https://github.com/xerial/sqlite-jdbc/releases
+
+Place the .jar file in the project folder before running the program.
+
 ## How to Run
 
 1. Run DatabaseSetup.java to create database
