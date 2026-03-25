@@ -17,7 +17,7 @@ The database will allow users to:
 ## Repository Structure
 - `proposal/` → project proposal  
 - `code/` → SQL scripts and Java JDBC code  
-- `report/` → ER diagram and final report
+- `report/` → ER diagram,presentation; and final report and final presentation
 
 ## How to Run
 
