@@ -1,4 +1,4 @@
---Table for shelters where pets are kept
+--Table for shelters where pets are kept 
 CREATE TABLE Shelter 
 (
     --unique ID for each shelter
@@ -82,7 +82,7 @@ CREATE TABLE AdoptionApplication
     --date of application
     application_date DATE,
 
-    --status of application (Pending, Approved, Rejected)
+    --status of application (Approved / Rejected)
     status VARCHAR(20),
 
     --link to adopter
@@ -138,7 +138,7 @@ INSERT INTO Staff VALUES
 
 --Sample adoption application records
 INSERT INTO AdoptionApplication VALUES
-(1, 1, 1, '2026-03-15', 'Pending'),
+(1, 1, 1, '2026-03-15', 'Approved'),
 (2, 2, 3, '2026-03-16', 'Approved');
 
 --Sample adoption records
