@@ -16,10 +16,19 @@ public class DatabaseSetup
         try
         {
             //connect to SQLite database
+            Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection(url);
 
             //create statement object
             Statement stmt = conn.createStatement();
+
+            //drop old tables first so database resets properly
+            stmt.execute("DROP TABLE IF EXISTS AdoptionRecord");
+            stmt.execute("DROP TABLE IF EXISTS AdoptionApplication");
+            stmt.execute("DROP TABLE IF EXISTS Staff");
+            stmt.execute("DROP TABLE IF EXISTS Adopter");
+            stmt.execute("DROP TABLE IF EXISTS Pet");
+            stmt.execute("DROP TABLE IF EXISTS Shelter");
 
             //SQL to create Shelter table
             String shelterTable = "CREATE TABLE IF NOT EXISTS Shelter ("
@@ -80,44 +89,42 @@ public class DatabaseSetup
                     + ");";
 
             //sample data for Shelter table
-            String insertShelter = "INSERT OR IGNORE INTO Shelter VALUES "
+            String insertShelter = "INSERT INTO Shelter VALUES "
                     + "(1, 'Happy Tails Shelter', 'Saint John'), "
-                    + "(2, 'Safe Paws Shelter', 'Fredericton');";
+                    + "(2, 'Safe Paws Shelter  ', 'Fredericton');";
 
             //sample data for Pet table
-            String insertPet = "INSERT OR IGNORE INTO Pet VALUES "
+            String insertPet = "INSERT INTO Pet VALUES "
                     + "(1, 'Max', 'Dog', 'Labrador', 3, 'Available', 1), "
                     + "(2, 'Bella', 'Cat', 'Siamese', 2, 'Available', 1), "
-                    + "(3, 'Charlie', 'Dog', 'Beagle', 4, 'Adopted', 2);";
+                    + "(3, 'Charlie', 'Dog', 'Beagle', 4, 'Available', 2);";
 
             //sample data for Adopter table
-            String insertAdopter = "INSERT OR IGNORE INTO Adopter VALUES "
+            String insertAdopter = "INSERT INTO Adopter VALUES "
                     + "(1, 'John Smith', '1234567890', 'john@example.com', 'Saint John'), "
                     + "(2, 'Emma Brown', '9876543210', 'emma@example.com', 'Fredericton');";
 
             //sample data for Staff table
-            String insertStaff = "INSERT OR IGNORE INTO Staff VALUES "
+            String insertStaff = "INSERT INTO Staff VALUES "
                     + "(1, 'Alice Green', 'Manager', 1), "
                     + "(2, 'Bob White', 'Volunteer', 2);";
 
             //sample data for AdoptionApplication table
-            String insertApplication = "INSERT OR IGNORE INTO AdoptionApplication VALUES "
-                    + "(1, 1, 1, '2026-03-15', 'Pending'), "
-                    + "(2, 2, 3, '2026-03-16', 'Approved');";
+            String insertApplication = null;
 
             //sample data for AdoptionRecord table
-            String insertRecord = "INSERT OR IGNORE INTO AdoptionRecord VALUES "
+            String insertRecord = "INSERT INTO AdoptionRecord VALUES "
                     + "(1, 2, 3, '2026-03-18');";
-            
+
             //execute table creation
             stmt.execute(shelterTable);
             stmt.execute(petTable);
-
             stmt.execute(adopterTable);
             stmt.execute(staffTable);
             stmt.execute(applicationTable);
             stmt.execute(recordTable);
 
+            //insert fresh sample data
             stmt.execute(insertShelter);
             stmt.execute(insertPet);
             stmt.execute(insertAdopter);
@@ -147,21 +154,6 @@ public class DatabaseSetup
             //close result set
             rs.close();
 
-            //update query to approve an adoption application
-            String updateApplication = "UPDATE AdoptionApplication "
-                    + "SET status = 'Approved' "
-                    + "WHERE application_id = 1;";
-
-            //run the update query
-            stmt.execute(updateApplication);
-
-            //delete query to remove a sample adopter
-            String deleteAdopter = "DELETE FROM Adopter "
-                    + "WHERE adopter_id = 3;";
-
-            //run the delete query
-            stmt.execute(deleteAdopter);
-            
             //success message
             System.out.println("All tables and sample data created successfully.");
 
