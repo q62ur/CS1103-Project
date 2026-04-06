@@ -109,8 +109,8 @@ public class DatabaseSetup
                     + "(1, 'Alice Green', 'Manager', 1), "
                     + "(2, 'Bob White', 'Volunteer', 2);";
 
-            //sample data for AdoptionApplication table
-            String insertApplication = null;
+            //no initial adoption applications inserted
+            String insertApplication = "";
 
             //sample data for AdoptionRecord table
             String insertRecord = "INSERT INTO AdoptionRecord VALUES "
@@ -129,7 +129,11 @@ public class DatabaseSetup
             stmt.execute(insertPet);
             stmt.execute(insertAdopter);
             stmt.execute(insertStaff);
+            //execute only if there is a valid insert statement
+            if (!insertApplication.equals(""))
+            {
             stmt.execute(insertApplication);
+            }
             stmt.execute(insertRecord);
 
             //query to show all available pets
