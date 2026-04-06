@@ -8,6 +8,8 @@
 This project implements a Pet Adoption Management System database.  
 The system manages information about pets available for adoption, adopters, shelters and adoption applications.
 
+A basic graphical interface using Java Swing was also explored as an optional extension(see PetAdoptionGUI.java).
+
 The database will allow users to:
 - view pets available for adoption
 - submit adoption applications
@@ -30,12 +32,20 @@ Place the .jar file in the project folder before running the program.
 
 1. Run DatabaseSetup.java to create database
 2. Run PetAdoptionApp.java to use the system
+3. (Optional) Run PetAdoptionGUI.java to explore the graphical interface(partial implementation)
 
 ## Technologies Used
 - Java
 - JDBC
+- SQLite
+- SQL
+- Java Swing (GUI exploration)
 
 ## ER Diagram
 See report/er_diagram.png
 - SQLite
 - SQL
+
+## Extra Exploration
+A partial GUI version(PetAdoptionGUI.java) was started using Java Swing as an optional extension.
+The main required implementation remains the console based system.
