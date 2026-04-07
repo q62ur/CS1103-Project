@@ -1,6 +1,7 @@
 # Pet Adoption Management System
 
-**Student:** Chanchalpreet Kaur  
+**Name:** Chanchalpreet Kaur  
+**Student ID:** 3772677
 **Course:** CS1103  
 **Instructor:** Jong-Kyou Kim  
 
@@ -17,7 +18,7 @@ The database will allow users to:
 - manage shelter and staff information
 
 ## Repository Structure
-- `proposal/` → project proposal  
+- Proposal (in `proposal` folder): [Project Proposal](proposal/proposal.md)  
 - `code/` → SQL scripts and Java JDBC code  
 - `report/` → ER diagram,presentation; and final report/presentation
 
