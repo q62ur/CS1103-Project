@@ -18,13 +18,25 @@ The database will allow users to:
 - manage shelter and staff information
 
 ## Repository Structure
-- Proposal (in `proposal` folder): [Project Proposal](proposal/proposal.md)  
-- `code/` → SQL scripts and Java JDBC code  
-- `report/` → ER diagram,presentation; and final report/presentation
+
+- Project Proposal (in `proposal/` folder): [Project Proposal](proposal/proposal.md)
+
+- `code/` folder → Contains all Java source files and SQL scripts  
+  - Includes JDBC implementation and application code
+
+    - [DatabaseSetup.java](code/DatabaseSetup.java)
+    - [PetAdoptionApp.java](code/PetAdoptionApp.java)
+    - [PetAdoptionGUI.java](code/PetAdoptionGUI.java)
+    - [schema.sql](code/schema.sql)
+
+- Project Deliverables (in `report` folder):  
+  - ER diagram: [ER Diagram](report/CS1103 Project ER Dia.drawio.png)  
+  - Presentation slides: [PPT](report/Pet_Adoption_Presentation.pptx)   
+  - User guide: [User Guide](report/README.md)
 
 ## Setup Instructions
 
-Download SQLite JDBC driver from:
+Download SQLite JDBC driver from: 
 https://github.com/xerial/sqlite-jdbc/releases
 
 Place the .jar file in the project folder before running the program.
@@ -41,12 +53,6 @@ Place the .jar file in the project folder before running the program.
 - SQLite
 - SQL
 - Java Swing (GUI exploration)
-
-## ER Diagram
-See report/er_diagram.png
-- SQLite
-- SQL
-
 ## Extra Exploration
 A partial GUI version(PetAdoptionGUI.java) was started using Java Swing as an optional extension.
 The main required implementation remains the console based system.
