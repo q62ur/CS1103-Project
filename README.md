@@ -35,6 +35,9 @@ The database will allow users to:
   - Presentation slides: [PPT](report/Pet_Adoption_Presentation.pptx)   
   - User guide: [User Guide](report/README.md)
 
+- Project Presentation Video (google drive link)
+  [Watch Presentation Video](https://drive.google.com/file/d/13ITmAUxraNCqlUjHw1TVNFCx5gET_SSW/view?usp=sharing)
+
 ## Setup Instructions
 
 Download SQLite JDBC driver from: 
