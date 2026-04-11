@@ -29,8 +29,9 @@ The database will allow users to:
     - [PetAdoptionGUI.java](code/PetAdoptionGUI.java)
     - [schema.sql](code/schema.sql)
 
-- Project Deliverables (in `report` folder):  
-  - ER diagram: [ER Diagram](report/CS1103 Project ER Dia.drawio.png)  
+- Project Deliverables (in `report` folder):
+  - Final Report: [Final Report](report/Final_Report.docx)
+  - ER diagram: [ER Diagram](report/CS1103_Project_ER_Dia.drawio.png)  
   - Presentation slides: [PPT](report/Pet_Adoption_Presentation.pptx)   
   - User guide: [User Guide](report/README.md)
 
