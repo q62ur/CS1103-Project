@@ -2,11 +2,11 @@
 
 ## How to Run the Project
 
-1. Run DatabaseSetup.java
+1. Run [DatabaseSetup.java](code/DatabaseSetup.java)
    - This will create the database and tables
    - It will also insert sample data
 
-2. Run PetAdoptionApp.java
+2. Run [PetAdoptionApp.java](code/PetAdoptionApp.java)
    - This will open the menu system
 
 ## Menu Options
